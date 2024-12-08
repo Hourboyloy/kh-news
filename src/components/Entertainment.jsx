@@ -7,26 +7,30 @@ import { truncateText5 } from "../utils/truncateText5";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const Entertainment = () => {
-  const { newsofEntertainments } = useGlobalContext(); // Access client-side context
+  const { newsByCategory } = useGlobalContext(); // Access client-side context
 
   return (
     <div className="space-y-3.5">
-      <HeaderSection
-        title={"កម្សាន្ត"}
-        textColor={"text-red-600"}
-        bgColor={"bg-red-600"}
-        label={"/entertainment"}
-      />
+      <div
+        className={`${newsByCategory?.entertainment?.length <= 0 && "hidden"}`}
+      >
+        <HeaderSection
+          title={"កម្សាន្ត"}
+          textColor={"text-red-600"}
+          bgColor={"bg-purple-500"}
+          label={"/entertainment"}
+        />
+      </div>
 
-      <div className="overflow-hidden grid grid-cols-2 md:grid-cols-3 gap-2.5">
-        {newsofEntertainments?.length > 0 &&
-          newsofEntertainments?.map(
+      <div className="overflow-hidden grid grid-cols-2 lg:grid-cols-3 gap-2.5">
+        {newsByCategory?.entertainment?.length > 0 &&
+          newsByCategory?.entertainment?.map(
             (data, index) =>
               index < 6 && (
                 <Link
                   href={`/article/${data._id}`}
                   key={index}
-                  className="relative rounded-md overflow-hidden shadow-md"
+                  className="relative rounded-md overflow-hidden md:shadow-md md:border-none border border-gray-50 shadow md:bg-none bg-white"
                 >
                   <Image
                     key={index}
@@ -42,8 +46,8 @@ const Entertainment = () => {
                     }
                   />
 
-                  <div className="absolute bottom-0 w-full bg-black bg-opacity-45">
-                    <h3 className="px-4 py-2 text-white text-[16px]">
+                  <div className="p-1.5 md:p-0 md:absolute bottom-0 w-full md:bg-black md:bg-opacity-45">
+                    <h3 className="md:px-4 py-2 md:text-white lg:text-[16px] md:text-[13px] text-[13px]">
                       {truncateText5(`${data.title}`)}
                     </h3>
                   </div>

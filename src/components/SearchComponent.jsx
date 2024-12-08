@@ -41,7 +41,7 @@ const SearchComponent = () => {
   }, []);
 
   return (
-    <div className="relative z-30 w-[400px]" ref={searchRef}>
+    <div className="relative z-30 xl:w-[400px] lg:w-[360px] w-[300px]" ref={searchRef}>
       <form onSubmit={(e) => e.preventDefault()}>
         <input
           className="bg-gray-50 w-full py-2 pl-4 pr-11 rounded-md focus:outline-none focus:border-gray-300 transition duration-100 ease-in-out border border-gray-200 text-gray-700"

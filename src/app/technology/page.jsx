@@ -1,15 +1,13 @@
 "use client";
-import { useGlobalContext } from "@/context/GlobalContext";
 import Container from "../../components/Container";
 import { truncateText2 } from "../../utils/truncateText2";
-import { truncateText5 } from "../../utils/truncateText5";
 import { truncateText4 } from "../../utils/truncateText4";
+import { truncateText5 } from "../../utils/truncateText5";
 import Image from "next/image";
 import Link from "next/link";
-
-const ReligionPage = () => {
+import { useGlobalContext } from "@/context/GlobalContext";
+const SportPage = () => {
   const { newsByCategory } = useGlobalContext();
-  // const { newsByCategory?.life } = useGlobalContext();
 
   return (
     <div className="w-full">
@@ -19,10 +17,10 @@ const ReligionPage = () => {
           <div className="my-1 flex justify-between items-center">
             {/* Left */}
             <div
-              className={`	bg-yellow-500  px-8 2xl:pl-4 2xl:pr-14 2xl:py-[0.50rem] py-[0.30rem] relative overflow-hidden flex items-center`}
+              className={`	bg-gray-700  px-8 2xl:pl-4 2xl:pr-14 2xl:py-[0.50rem] py-[0.30rem] relative overflow-hidden flex items-center`}
             >
               <h2 className="2xl:text-[24px] md:text-[20px] text-[18px]">
-                ជំនឿសាសនា
+                បច្ចេកវិទ្យា
               </h2>
               <div
                 className="absolute h-full right-0 2xl:border-t-[54px] 2xl:border-l-[45px] 2xl:border-t-white 2xl:border-l-transparent"
@@ -30,7 +28,7 @@ const ReligionPage = () => {
               />
             </div>
           </div>
-          <div className={`	bg-yellow-500 h-1 md:h-2 w-full`}></div>
+          <div className={`	bg-gray-700 h-1 md:h-2 w-full`}></div>
         </div>
 
         {/* Big Section */}
@@ -39,8 +37,8 @@ const ReligionPage = () => {
           <div className="hidden md:grid lg:grid-cols-4 md:grid-cols-5 grid-cols-2 gap-2 lg:grid-rows-1 lg:h-[400px]">
             {/* Small Card */}
             <div className="grid lg:col-span-1 md:col-span-2 gap-2">
-              {newsByCategory?.life.length > 0 &&
-                newsByCategory?.life.map(
+              {newsByCategory?.technology.length > 0 &&
+                newsByCategory?.technology.map(
                   (data, index) =>
                     index < 2 && (
                       <Link
@@ -73,8 +71,8 @@ const ReligionPage = () => {
 
             {/* Big Card */}
             <div className="grid lg:col-span-2 md:col-span-3 gap-2">
-              {newsByCategory?.life.length > 0 &&
-                newsByCategory?.life.map(
+              {newsByCategory?.technology.length > 0 &&
+                newsByCategory?.technology.map(
                   (data, index) =>
                     index == 2 && (
                       <Link
@@ -114,8 +112,8 @@ const ReligionPage = () => {
             {/* Small Card */}
             <div className="hidden lg:grid lg:col-span-1 md:col-span-5 gap-2">
               <div className="grid lg:grid-cols-1 md:grid-cols-3 grid-cols-2 lg:grid-rows-4 gap-2 lg:h-[400px]">
-                {newsByCategory?.life.length > 0 &&
-                  newsByCategory?.life.map(
+                {newsByCategory?.technology.length > 0 &&
+                  newsByCategory?.technology.map(
                     (data, index) =>
                       index > 2 &&
                       index < 7 && (
@@ -150,8 +148,8 @@ const ReligionPage = () => {
 
         {/* Small Section */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-4 gap-2 mt-2 mb-5">
-          {newsByCategory?.life.length > 0 &&
-            newsByCategory?.life.map(
+          {newsByCategory?.technology.length > 0 &&
+            newsByCategory?.technology.map(
               (data, index) =>
                 index >= 0 &&
                 index < 7 && (
@@ -179,8 +177,8 @@ const ReligionPage = () => {
                 )
             )}
 
-          {newsByCategory?.life.length > 0 &&
-            newsByCategory?.life.map(
+          {newsByCategory?.technology.length > 0 &&
+            newsByCategory?.technology.map(
               (data, index) =>
                 index > 2 &&
                 index < 7 && (
@@ -208,8 +206,8 @@ const ReligionPage = () => {
                 )
             )}
 
-          {newsByCategory?.life.length > 0 &&
-            newsByCategory?.life.map(
+          {newsByCategory?.technology.length > 0 &&
+            newsByCategory?.technology.map(
               (data, index) =>
                 index >= 7 &&
                 index < 23 && (
@@ -242,4 +240,4 @@ const ReligionPage = () => {
   );
 };
 
-export default ReligionPage;
+export default SportPage;

@@ -89,19 +89,21 @@ const items = [
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white select-none text-xl flex justify-center items-center py-4">
+    <footer className="bg-gray-800 text-white select-none text-xl flex justify-center items-center py-8">
       <Container>
-        <div className="h-[20vh] justify-center flex flex-col space-y-6">
+        <div className="justify-center flex flex-col lg:space-y-6 md:space-y-4 space-y-4">
           <ul className="flex gap-4 justify-center">
             {items.map((items, i) => (
               <li key={i}>
                 <Link href={`/${items.href}`}>
-                  <span className="SFPro text-lg font-bold">{items.name}</span>
+                  <span className="SFPro lg:text-lg md:text-base text-sm lg:font-bold">
+                    {items.name}
+                  </span>
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="flex gap-9 justify-center items-center">
+          <div className="flex lg:gap-9 md:gap-6 gap-3 justify-center items-center">
             <Link href="/">
               <FaFacebook />
             </Link>
@@ -122,7 +124,7 @@ const Footer = () => {
             </Link>
           </div>
 
-          <p className="flex justify-center text-sm opacity-50">
+          <p className="flex justify-center md:text-sm text-xs opacity-50">
             &copy;{new Date().getFullYear()} Khmer News, Inc. All rights
             reserved.
           </p>

@@ -9,20 +9,22 @@ import { formatDate } from "../utils/formatDate";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const Sport = () => {
-  const { newsofShorts } = useGlobalContext();
+  const { newsByCategory } = useGlobalContext();
   return (
     <div className="space-y-3 mt-2">
-      <HeaderSection
-        title={"កីឡា"}
-        textColor={"text-green-600"}
-        bgColor={"bg-green-600"}
-        label={"/sport"}
-      />
+      <div className={`${newsByCategory?.sports?.length <= 0 && "hidden"}`}>
+        <HeaderSection
+          title={"កីឡា"}
+          textColor={"text-red-600"}
+          bgColor={"bg-red-500"}
+          label={"/sport"}
+        />
+      </div>
       <div className="grid gap-2">
         {/* Big Card */}
-        <div className="grid grid-cols-3 gap-2.5 mb-1">
-          {newsofShorts?.length > 0 &&
-            newsofShorts?.map(
+        <div className="hidden lg:grid grid-cols-3 gap-2.5 mb-3">
+          {newsByCategory?.sports?.length > 0 &&
+            newsByCategory?.sports?.map(
               (data, index) =>
                 index < 3 && (
                   <Link
@@ -43,7 +45,7 @@ const Sport = () => {
                       className="h-[120px] md:h-[220px] object-cover object-center"
                     />
                     <div className="flex gap-2">
-                      <h2 className="bg-green-600 text-lg text-white py-1 flex justify-center items-center px-8">
+                      <h2 className="bg-red-500 2xl:text-lg lg:text-base text-white flex justify-center items-center px-8">
                         កីឡា
                       </h2>
                       <div className="text-[14px] flex flex-col justify-center">
@@ -58,36 +60,80 @@ const Sport = () => {
                 )
             )}
         </div>
-        {/* Small Card */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
-          {newsofShorts?.length > 0 &&
-            newsofShorts?.map(
-              (data, index) =>
-                index >= 3 &&
-                index < 11 && (
-                  <Link
-                    href={`/article/${data._id}`}
-                    key={index}
-                    className="h-[90px] flex mt-1 md:mt-2 items-center rounded-md overflow-hidden shadow-lg"
-                  >
-                    <Image
-                      src={
-                        data.photosDescription.length > 0 &&
-                        data.photosDescription.find(
-                          (photoObj) => photoObj.photo && photoObj.photo !== ""
-                        )?.photo
-                      }
-                      width={200}
-                      height={200}
-                      alt="Image"
-                      className="w-[500px] overflow-hidden h-full object-cover object-center"
-                    />
-                    <h3 className="py-2 px-2 text-sm">
-                      {truncateText2(`${data.title}`)}
-                    </h3>
-                  </Link>
-                )
-            )}
+
+        <div>
+          {/* Small Card */}
+          <div className="hidden lg:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5">
+            {newsByCategory?.sports?.length > 0 &&
+              newsByCategory?.sports?.map(
+                (data, index) =>
+                  index >= 3 &&
+                  index < 11 && (
+                    <Link
+                      href={`/article/${data._id}`}
+                      key={index}
+                      className="h-[90px] flex mt-1 md:mt-2 items-center overflow-hidden"
+                    >
+                      <div className="w-[400px] overflow-hidden flex items-center justify-center">
+                        <Image
+                          src={
+                            data.photosDescription.length > 0 &&
+                            data.photosDescription.find(
+                              (photoObj) =>
+                                photoObj.photo && photoObj.photo !== ""
+                            )?.photo
+                          }
+                          width={500}
+                          height={500}
+                          alt="Image"
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      <div className="w-full">
+                        <h3 className="py-2 px-2 text-sm">
+                          {truncateText2(`${data.title}`)}
+                        </h3>
+                      </div>
+                    </Link>
+                  )
+              )}
+          </div>
+
+          {/* conbind big and small card */}
+          <div className="lg:hidden grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5">
+            {newsByCategory?.sports?.length > 0 &&
+              newsByCategory?.sports?.map(
+                (data, index) =>
+                  index < 10 && (
+                    <Link
+                      href={`/article/${data._id}`}
+                      key={index}
+                      className="h-[90px] flex mt-1 md:mt-2 items-center overflow-hidden"
+                    >
+                      <div className="w-[400px] overflow-hidden flex items-center justify-center">
+                        <Image
+                          src={
+                            data.photosDescription.length > 0 &&
+                            data.photosDescription.find(
+                              (photoObj) =>
+                                photoObj.photo && photoObj.photo !== ""
+                            )?.photo
+                          }
+                          width={500}
+                          height={500}
+                          alt="Image"
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      <div className="w-full">
+                        <h3 className="py-2 px-2 text-sm">
+                          {truncateText2(`${data.title}`)}
+                        </h3>
+                      </div>
+                    </Link>
+                  )
+              )}
+          </div>
         </div>
       </div>
     </div>

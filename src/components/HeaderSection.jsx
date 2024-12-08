@@ -9,23 +9,25 @@ const HeaderSection = ({ title, bgColor, textColor, label }) => {
         {/* Left */}
         <Link
           href={`${label}`}
-          className={`${bgColor} pl-4 pr-14 py-[0.50rem] relative overflow-hidden flex items-center`}
+          className={`${bgColor} w-28 xl:w-36 2xl:w-auto 2xl:pl-4 2xl:pr-14 xl:py-[0.50rem] md:py-1.5 py-1.5 relative overflow-hidden flex items-center`}
         >
-          <h2 className="text-2xl">{title}</h2>
+          <h2 className="xl:text-2xl lg:text-xl md:text-lg text-sm text-center w-full">
+            {title}
+          </h2>
           <div
-            className="absolute h-full right-0 border-t-[45px] border-l-[45px] border-t-white border-l-transparent"
+            className="absolute h-full right-0 2xl:border-t-[45px] 2xl:border-l-[45px] 2xl:border-t-white 2xl:border-l-transparent"
             aria-hidden="true"
           />
         </Link>
         {/* Right */}
         <Link
           href={`${label}`}
-          className={`${textColor} flex items-end gap-4 px-6`}
+          className={`${bgColor} flex items-end gap-1 py-1.5 lg:px-4 px-2 md:text-white`}
         >
-          <h2 className="cursor-pointer text-lg font-semibold SFPro">
+          <h2 className="cursor-pointer text-sm md:text-base xl:text-lg font-semibold SFPro">
             View All
           </h2>
-          <ArrowRight className="cursor-pointer mb-1" />
+          <ArrowRight className="cursor-pointer mb-[1px] md:mb-1 lg:mb-0 xl:mb-1 w-5 h-5 lg:w-6 lg:h-6" />
         </Link>
       </div>
       <div className={`${bgColor} h-2 w-full`}></div>

@@ -36,10 +36,10 @@ export default function RootLayout({ children }) {
         <GlobalProvider>
           <ScrollToTop />
           <Header />
-          <div className="flex flex-col min-h-screen mt-2">
+          <div className="flex flex-col min-h-screen mt-2 pt-[55px] md:pt-[70px] lg:pt-1">
             <main className="flex flex-grow">{children}</main>
-            <Footer />
           </div>
+          <Footer />
         </GlobalProvider>
       </body>
     </html>

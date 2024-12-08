@@ -56,7 +56,7 @@ const Id = () => {
   return (
     <div className="w-full relative bg-[#F6F6F6]">
       <div
-        className="bg-cover bg-no-repeat blur-[10px] w-full h-[100vh] absolute -top-2 left-0"
+        className="bg-cover bg-no-repeat blur-[10px] w-full lg:h-[100vh] h-[50vh] absolute -top-2 left-0"
         style={{
           backgroundImage: `url(${data?.photosDescription[0].photo})`,
         }}
@@ -74,7 +74,7 @@ const Id = () => {
         <Container>
           <div className="grid grid-cols-3 gap-4">
             {/* Left */}
-            <div className="col-span-2 bg-white p-10 shadow-md border border-gray-200">
+            <div className="lg:col-span-2 col-span-3 bg-white xl:p-10 p-6 shadow-md border border-gray-200">
               <div className="mb-3">
                 <h2 className="text-base sm:text-xl md:text-2xl text-red-700 pb-2">
                   {data.title}
@@ -115,8 +115,9 @@ const Id = () => {
                 openAuthModal={openAuthModal}
               />
             </div>
+
             {/* Right */}
-            <div className="col-span-1 space-y-4">
+            <div className="lg:col-span-1 md:col-span-2 col-span-3 space-y-4">
               <div className="space-y-3 md:space-y-2 bg-white p-2.5 shadow-md border border-gray-200">
                 <h2 className="text-red-600 text-2xl">អត្ថបទពេញនិយម</h2>
                 {popularArticles?.map(
@@ -187,7 +188,7 @@ const Id = () => {
           </div>
 
           {/* Card */}
-          <div className="w-full bg-white my-4 p-6 shadow-md border border-gray-200 space-y-4">
+          <div className="w-full bg-white my-4 lg:p-6 md:p-4 p-3 shadow-md border border-gray-200 space-y-4">
             <div className="space-y-0.5">
               <h2 className="text-gray-600 font-medium text-2xl">
                 អត្ថបទទាក់ទង
@@ -195,11 +196,11 @@ const Id = () => {
               <p className="border-2 border-red-500 w-11"></p>
             </div>
 
-            <ul className="grid grid-cols-4 gap-3.5">
+            <ul className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-3.5">
               {dataByCategory?.length > 0 &&
                 dataByCategory.map(
                   (ele, index) =>
-                    index < 8 && (
+                    index < 12 && (
                       <Link
                         href={`${ele._id}`}
                         key={ele + index}
@@ -218,9 +219,10 @@ const Id = () => {
                               width={400}
                               height={400}
                               alt="Image"
-                              className="w-full h-[150px] md:h-[220px] object-cover object-center"
+                              className="w-full h-[110px] md:h-[220px] object-cover object-center"
                             />
                           </div>
+
                           <h3 className="text-[14px] md:text-[16px] text-gray-800 transition">
                             {ele.title.length > 90
                               ? `${ele.title.substring(0, 90)}...`

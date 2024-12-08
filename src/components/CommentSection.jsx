@@ -233,11 +233,10 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
   };
 
   const handleLikeDislikeComment = async (commentId, action) => {
-
-     if (isLogin !== "1" && !user) {
-       openAuthModal();
-       return;
-     }
+    if (isLogin !== "1" && !user) {
+      openAuthModal();
+      return;
+    }
 
     if (!["like", "dislike", "clearLike", "clearDislike"].includes(action)) {
       console.error(
@@ -335,10 +334,10 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
   };
 
   const handleReplyReaction = async (commentId, replyId, action) => {
-     if (isLogin !== "1" && !user) {
-       openAuthModal();
-       return;
-     }
+    if (isLogin !== "1" && !user) {
+      openAuthModal();
+      return;
+    }
     if (!["like", "dislike", "clearLike", "clearDislike"].includes(action)) {
       console.log(
         "Invalid action. Must be 'like', 'dislike', 'clearLike', or 'clearDislike'."
@@ -509,7 +508,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
           return (
             <li key={comment._id || index} alter="" className="py-2">
               <div className="flex items-start relative">
-                <button className=" absolute top-0 right-0 hover:bg-gray-100 transition-all duration-300 rounded-full p-2.5 outline-none focus:outline-none select-none ">
+                <button className="absolute top-0 -right-4 hover:bg-gray-100 transition-all duration-300 rounded-full p-2.5 outline-none focus:outline-none select-none">
                   <CiMenuKebab />
                 </button>
 
@@ -598,6 +597,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                       <FaReply /> <span>Reply</span>
                     </button>
                   </div>
+
                   {/* reply main comment */}
                   {activeReply === comment._id &&
                     (replyMainCommentloading ? (
@@ -697,7 +697,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                         <ul className="mt-4 space-y-5 border-l pl-2">
                           {comment.replies.map((reply) => (
                             <li key={reply._id} className="mt-2">
-                              <div className="flex justify-between relative">
+                              <div className="relative">
                                 <div className="flex">
                                   <p
                                     className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-3"
@@ -804,7 +804,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                                     </div>
                                   </div>
                                 </div>
-                                <button className="">
+                                <button className="absolute top-0 -right-4 hover:bg-gray-100 transition-all duration-300 rounded-full p-2.5 outline-none focus:outline-none select-none">
                                   <CiMenuKebab />
                                 </button>
 

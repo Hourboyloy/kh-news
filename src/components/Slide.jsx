@@ -94,8 +94,10 @@ export default function Slide() {
                   />
                   <div className="bg-black absolute bottom-0 bg-opacity-30 w-full text-white">
                     <div className="px-4 mb-4 py-4 space-y-2">
-                      <h2 className="text-2xl">{truncateText(`${d.title}`)}</h2>
-                      <h4 className="text-base">
+                      <h2 className="xl:text-2xl lg:text-xl text-sm md:text-lg">
+                        {truncateText(`${d.title}`)}
+                      </h2>
+                      <h4 className="md:text-base md:block hidden">
                         {truncateText4(
                           d.photosDescription.length > 0
                             ? d.photosDescription[0].description
