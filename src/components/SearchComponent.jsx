@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useGlobalContext } from "../context/GlobalContext";
 
-const SearchComponent = () => {
+const SearchComponent = ({ toggleSideMenu, isSideMenu }) => {
   const { news } = useGlobalContext();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -41,7 +41,7 @@ const SearchComponent = () => {
   }, []);
 
   return (
-    <div className="relative z-30 xl:w-[400px] lg:w-[360px] w-[300px]" ref={searchRef}>
+    <div className="relative z-30 xl:w-[400px] lg:w-[360px]" ref={searchRef}>
       <form onSubmit={(e) => e.preventDefault()}>
         <input
           className="bg-gray-50 w-full py-2 pl-4 pr-11 rounded-md focus:outline-none focus:border-gray-300 transition duration-100 ease-in-out border border-gray-200 text-gray-700"
@@ -61,13 +61,22 @@ const SearchComponent = () => {
           <Search className="absolute top-2 right-3 text-gray-500" />
         </button>
       </form>
+
       {searchResults?.length > 0 && (
         <ul className="absolute bg-white border border-gray-300 rounded-md mt-1 w-full max-h-[400px] overflow-y-auto z-50">
           {searchResults.map((result, index) => (
-            <li key={index} className="p-2 hover:bg-gray-100 flex items-center">
+            <li
+              onClick={() => {
+                if (isSideMenu) {
+                  toggleSideMenu();
+                }
+              }}
+              key={index}
+              className="p-2 hover:bg-gray-100 flex items-center"
+            >
               <Link
                 href={`/article/${result._id}`}
-                className="flex items-center"
+                className="flex md:flex-row flex-col items-center space-y-2 md:space-y-0"
                 onClick={() => {
                   setSearchTerm("");
                   setSearchResults([]);
@@ -84,10 +93,14 @@ const SearchComponent = () => {
                     alt={result.title}
                     width={100}
                     height={50}
-                    className="h-full object-center object-cover mr-3"
+                    className="h-full md:w-auto w-full object-center object-cover mr-3"
                   />
                 )}
-                <span>{result.title}</span>
+                <span>
+                  {result?.title.length > 70
+                    ? result.title.slice(0,70) + "..."
+                    : result.title}
+                </span>
               </Link>
             </li>
           ))}

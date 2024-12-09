@@ -10,6 +10,7 @@ import { IoMenuSharp } from "react-icons/io5";
 import Notification from "./Notifications";
 import { FaUser } from "react-icons/fa6";
 import { useGlobalContext } from "../context/GlobalContext";
+import SideMenu from "../components/SideMenu";
 
 export const navLinks = [
   { label: "ទំព័រដើម", href: "/" },
@@ -66,11 +67,21 @@ const Header = () => {
             >
               <h2 className="bayon">Kh News</h2>
             </Link>
-            <div className="lg:hidden">
+            <button onClick={toggleMobileMenu} className="lg:hidden">
               <IoMenuSharp className="text-3xl text-gray-500" />
-            </div>
+            </button>
           </div>
         </Container>
+        {/* side nav */}
+        <div className="lg:hidden">
+          <SideMenu
+            isOpen={isMobileMenuOpen}
+            toggleSideMenu={toggleMobileMenu}
+            isLogin={isLogin}
+            handleClearStorage={handleClearStorage}
+            openAuthModal={openAuthModal}
+          />
+        </div>
       </nav>
 
       <div
@@ -104,7 +115,7 @@ const Header = () => {
               </div>
 
               <div className="flex items-center gap-4">
-                <SearchComponent />
+                <SearchComponent isSideMenu={false} />
                 <button
                   onClick={toggleNotifications}
                   className="relative h-[41px] w-[41px] bg-[#E2E5E9] rounded-full transition-all duration-300 hover:bg-[#d6d9dd] flex items-center justify-center outline-none focus:outline-none"
@@ -154,39 +165,15 @@ const Header = () => {
                     <Notification />
                   </div>
                 )}
-
-                <button
-                  className="md:hidden text-red-500"
-                  onClick={toggleMobileMenu}
-                  aria-label="Toggle mobile menu"
-                >
-                  ☰
-                </button>
               </div>
             </nav>
-
-            {isMobileMenuOpen && (
-              <ul className="md:hidden text-blue-800 flex flex-col items-center gap-4 mt-4">
-                {navLinks.map((link) => (
-                  <li className="text-base cursor-pointer" key={link.label}>
-                    <Link
-                      className="bayon text-xs sm:text-[0.8rem] lg:text-xl hover:text-blue-600 transition-colors"
-                      href={link.href}
-                      aria-label={link.label}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
           </Container>
         </div>
 
         <Dialog open={isAuthModalOpen} onOpenChange={setAuthModalOpen}>
           <DialogContent className="sm:max-w-[425px] p-0">
             <DialogTitle className="hidden"></DialogTitle>
-            <AuthForm closeModal={closeAuthModal} />
+            <AuthForm closeModal={closeAuthModal} isOpen={isMobileMenuOpen} />
           </DialogContent>
         </Dialog>
       </header>
