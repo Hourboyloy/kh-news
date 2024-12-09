@@ -436,10 +436,10 @@ export const GlobalProvider = ({ children }) => {
   // Categorize articles by category
   const categorizeArticles = (articles) => {
     const categorized = {
-      entertainment: articles.filter((ele) => ele.category === "កម្សាន្ត"),
-      sports: articles.filter((ele) => ele.category === "កីឡា"),
-      technology: articles.filter((ele) => ele.category === "បច្ចេកវិទ្យា"),
-      life: articles.filter((ele) => ele.category === "ជីវិតនិងសង្គម"),
+      entertainment: articles.filter((ele) => ele.category === "កម្សាន្ត").reverse(),
+      sports: articles.filter((ele) => ele.category === "កីឡា").reverse(),
+      technology: articles.filter((ele) => ele.category === "បច្ចេកវិទ្យា").reverse(),
+      life: articles.filter((ele) => ele.category === "ជីវិតនិងសង្គម").reverse(),
     };
 
     setNewsByCategory(categorized);

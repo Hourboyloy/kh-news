@@ -6,6 +6,7 @@ import Image from "next/image";
 // import { truncateText } from "../utils/truncateText";
 import Link from "next/link";
 import { useGlobalContext } from "@/context/GlobalContext";
+import { formatDate } from "@/utils/formatDate";
 const Life = () => {
   const { newsByCategory } = useGlobalContext();
 
@@ -91,7 +92,7 @@ const Life = () => {
                             {data.category}
                           </h2>
                           <div className="text-[12px] flex flex-col justify-center">
-                            <p>ថ្ងៃនេះ ម៉ោង 14:02</p>
+                            <p>{formatDate(data.createdAt)}</p>
                             <p>ចំនួនមតិ 0</p>
                           </div>
                         </div>

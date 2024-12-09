@@ -22,7 +22,7 @@ const Sport = () => {
       </div>
       <div className="grid gap-2">
         {/* Big Card */}
-        <div className="hidden lg:grid grid-cols-3 gap-2.5 mb-3">
+        {/* <div className="hidden lg:grid grid-cols-3 gap-2.5 mb-3">
           {newsByCategory?.sports?.length > 0 &&
             newsByCategory?.sports?.map(
               (data, index) =>
@@ -59,6 +59,51 @@ const Sport = () => {
                   </Link>
                 )
             )}
+        </div> */}
+
+        <div className="hidden lg:grid grid-cols-3 gap-2.5 mb-3">
+          {newsByCategory?.sports?.length > 0 &&
+            newsByCategory.sports.slice(0, 3).map((data) => {
+              // Calculate comment and reply counts
+              const commentCount = data.comments?.length || 0;
+              const replyCount =
+                data.comments?.reduce((total, comment) => {
+                  return total + (comment.replies ? comment.replies.length : 0);
+                }, 0) || 0;
+              const totalCommentsAndReplies = commentCount + replyCount;
+
+              return (
+                <Link
+                  href={`/article/${data._id}`}
+                  key={data._id}
+                  className="rounded-md overflow-hidden shadow-lg space-y-2"
+                >
+                  <Image
+                    src={
+                      data.photosDescription?.find(
+                        (photoObj) => photoObj.photo && photoObj.photo !== ""
+                      )?.photo || "/fallback-image.jpg"
+                    }
+                    width={400}
+                    height={400}
+                    alt={data.title || "Default Image"}
+                    className="w-full h-[120px] md:h-[220px] object-cover object-center"
+                  />
+                  <div className="flex gap-2">
+                    <h2 className="bg-red-500 2xl:text-lg lg:text-base text-white flex justify-center items-center px-8">
+                      កីឡា
+                    </h2>
+                    <div className="text-[14px] flex flex-col justify-center">
+                      <p>{formatDate(data.createdAt)}</p>
+                      <p>ចំនួនមតិ {totalCommentsAndReplies}</p>
+                    </div>
+                  </div>
+                  <h3 className="pb-2 px-4 text-[14px] md:text-[15px]">
+                    {truncateText(data.title || "No Title")}
+                  </h3>
+                </Link>
+              );
+            })}
         </div>
 
         <div>
