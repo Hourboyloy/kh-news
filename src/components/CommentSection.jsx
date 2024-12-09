@@ -112,7 +112,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
         `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments`,
         {
           userId: user._id,
-          username: user.username,
+          username: user?.username,
           commentText,
         },
         {
@@ -146,7 +146,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
         `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments/${parentId}/reply`,
         {
           userId: user._id,
-          username: user.username,
+          username: user?.username,
           replyText,
           replyToUsername,
         },
@@ -197,7 +197,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
         `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments/${parentId}/reply`,
         {
           userId: user._id,
-          username: user.username,
+          username: user?.username,
           replyText,
         },
         {
@@ -268,7 +268,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                 // Add the like if it doesn't exist
                 comment.like.push({
                   userid: user._id,
-                  username: user.username,
+                  username: user?.username,
                   createdAt: new Date(),
                 });
               }
@@ -286,7 +286,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                 // Add the dislike if it doesn't exist
                 comment.dislike.push({
                   userid: user._id,
-                  username: user.username,
+                  username: user?.username,
                   createdAt: new Date(),
                 });
               }
@@ -320,7 +320,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
         {
           action,
           userId: user._id,
-          username: user.username,
+          username: user?.username,
         },
         {
           headers: {
@@ -371,7 +371,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                   if (!alreadyLiked) {
                     reply.like.push({
                       userid: user._id,
-                      username: user.username,
+                      username: user?.username,
                     });
                   }
                 } else if (action === "dislike") {
@@ -385,7 +385,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                   if (!alreadyDisliked) {
                     reply.dislike.push({
                       userid: user._id,
-                      username: user.username,
+                      username: user?.username,
                     });
                   }
                 } else if (action === "clearLike") {
@@ -418,7 +418,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
         `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments/${commentId}/replies/${replyId}/like-dislike`,
         {
           userId: user._id,
-          username: user.username,
+          username: user?.username,
           action,
         },
         {
@@ -542,7 +542,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                         handleLikeDislikeComment(
                           comment._id,
                           comment.like?.some(
-                            (e) => e.username === user.username
+                            (e) => e.username === user?.username
                           )
                             ? "clearLike"
                             : "like"
@@ -738,7 +738,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                                             reply._id,
                                             reply.like?.some(
                                               (e) =>
-                                                e.username === user.username
+                                                e.username === user?.username
                                             )
                                               ? "clearLike"
                                               : "like"
@@ -750,7 +750,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                                           className={`${
                                             reply.like?.some(
                                               (e) =>
-                                                e.username === user.username
+                                                e.username === user?.username
                                             )
                                               ? "text-blue-500"
                                               : ""
@@ -767,7 +767,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                                             reply._id,
                                             reply.dislike?.some(
                                               (e) =>
-                                                e.username === user.username
+                                                e.username === user?.username
                                             )
                                               ? "clearDislike"
                                               : "dislike"
@@ -778,7 +778,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
                                           className={`${
                                             reply.dislike?.some(
                                               (e) =>
-                                                e.username === user.username
+                                                e.username === user?.username
                                             )
                                               ? "text-red-500"
                                               : ""
