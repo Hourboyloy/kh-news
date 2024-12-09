@@ -3,7 +3,7 @@ import axios from "axios";
 export const getArticleById = async (id) => {
   try {
     const res = await axios.get(
-      `https://api-school-amber.vercel.app/api/getone/${id}`
+      `https://api-news-dot-school.vercel.app/api/getone/${id}`
     );
     if (res.status === 200) {
       return res.data.news;

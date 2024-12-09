@@ -22,6 +22,7 @@ import CommentSection from "../../../components/CommentSection";
 import { truncateText5 } from "../../../utils/truncateText5";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { getArticleById } from "../../../utils/db";
+import axios from "axios";
 
 const Id = () => {
   const { newestArticles, news, popularArticles, openAuthModal } =
@@ -30,10 +31,21 @@ const Id = () => {
   const [dataByCategory, setDataByCategory] = useState([]);
   const { id } = useParams();
 
+  const handleViewer = async (id) => {
+    try {
+      await axios.post(
+        `https://api-news-dot-school.vercel.app/api/increase-viewer/${id}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchArticle = async () => {
       const article = await getArticleById(id);
       if (article) {
+        handleViewer(id);
         setData(article);
       }
     };

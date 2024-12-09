@@ -109,7 +109,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
 
     try {
       const res = await axios.post(
-        `https://api-school-amber.vercel.app/api/news/${newsId}/comments`,
+        `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments`,
         {
           userId: user._id,
           username: user.username,
@@ -143,7 +143,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
 
     try {
       const response = await axios.post(
-        `https://api-school-amber.vercel.app/api/news/${newsId}/comments/${parentId}/reply`,
+        `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments/${parentId}/reply`,
         {
           userId: user._id,
           username: user.username,
@@ -194,7 +194,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
 
     try {
       const response = await axios.post(
-        `https://api-school-amber.vercel.app/api/news/${newsId}/comments/${parentId}/reply`,
+        `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments/${parentId}/reply`,
         {
           userId: user._id,
           username: user.username,
@@ -316,7 +316,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
 
       // After updating the state, call the API to update the server-side data
       await axios.post(
-        `https://api-school-amber.vercel.app/api/news/${newsId}/comments/${commentId}/like-dislike`,
+        `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments/${commentId}/like-dislike`,
         {
           action,
           userId: user._id,
@@ -415,7 +415,7 @@ const CommentSection = ({ openAuthModal, newsId, ListComments }) => {
     try {
       // Call the backend API to persist the reaction
       await axios.post(
-        `https://api-school-amber.vercel.app/api/news/${newsId}/comments/${commentId}/replies/${replyId}/like-dislike`,
+        `https://api-news-dot-school.vercel.app/api/news/${newsId}/comments/${commentId}/replies/${replyId}/like-dislike`,
         {
           userId: user._id,
           username: user.username,

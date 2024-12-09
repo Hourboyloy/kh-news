@@ -409,7 +409,7 @@ export const GlobalProvider = ({ children }) => {
   const getAllArticles = async () => {
     try {
       const res = await axios.get(
-        "https://api-school-amber.vercel.app/api/user-get-all"
+        "https://api-news-dot-school.vercel.app/api/user-get-all"
       );
       if (res.status === 200) {
         setNews(res.data.listNews);
