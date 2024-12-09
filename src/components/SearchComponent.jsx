@@ -93,12 +93,12 @@ const SearchComponent = ({ toggleSideMenu, isSideMenu }) => {
                     alt={result.title}
                     width={100}
                     height={50}
-                    className="h-full md:w-auto w-full object-center object-cover mr-3"
+                    className="h-full md:w-auto w-full object-center object-cover md:mr-3"
                   />
                 )}
                 <span>
                   {result?.title.length > 70
-                    ? result.title.slice(0,70) + "..."
+                    ? result.title.slice(0, 70) + "..."
                     : result.title}
                 </span>
               </Link>
