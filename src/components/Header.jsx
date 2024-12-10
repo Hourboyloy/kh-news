@@ -134,7 +134,7 @@ const Header = () => {
                   <FaUser className="text-lg text-gray-600" />
                   {account ? (
                     isLogin ? (
-                      <div className=" absolute z-10 -right-6/12 top-16 w-40 bg-white flex flex-col border shadow rounded">
+                      <div className=" absolute z-10 2xl:-right-6/12 xl:-right-4 -right-[17px] top-16 w-40 bg-white flex flex-col border shadow rounded">
                         <button className="py-2 w-full hover:bg-[#F1F5F9]">
                           ប្រវត្តិរូប
                         </button>
@@ -146,7 +146,7 @@ const Header = () => {
                         </button>
                       </div>
                     ) : (
-                      <div className=" absolute z-10 -right-6/12 top-16 w-40 bg-white flex flex-col border shadow rounded">
+                      <div className=" absolute z-10 2xl:-right-6/12 xl:-right-4 -right-[17px] top-16 w-40 bg-white flex flex-col border shadow rounded">
                         <button
                           onClick={openAuthModal}
                           className="py-2 w-full hover:bg-[#F1F5F9]"
@@ -173,7 +173,9 @@ const Header = () => {
         <Dialog open={isAuthModalOpen} onOpenChange={setAuthModalOpen}>
           <DialogContent className="sm:max-w-[425px] p-0">
             <DialogTitle className="hidden"></DialogTitle>
-            <AuthForm closeModal={closeAuthModal} isOpen={isMobileMenuOpen} />
+            <div className="px-4 md:px-0">
+              <AuthForm closeModal={closeAuthModal} isOpen={isMobileMenuOpen} />
+            </div>
           </DialogContent>
         </Dialog>
       </header>

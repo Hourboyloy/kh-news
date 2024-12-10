@@ -172,6 +172,7 @@ export default function AuthForm({ closeModal }) {
       <h3 className="text-3xl text-center mb-6 text-primary bayon">
         {formMode === "register" ? "បង្កើតគណនី" : "ចូលគណនី"}
       </h3>
+      
       <form
         onSubmit={formMode === "register" ? handleRegister : handleLogin}
         className="space-y-4 focus:outline-none outline-none"
